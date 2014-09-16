@@ -11,13 +11,13 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class ServerDemo {
+public class Server {
     
     public static void main(String args[])
     {
-        new ServerDemo();
+        new Server();
     }
-    public ServerDemo()
+    public Server()
     {
         try{
             ServerSocket serverSocket = new ServerSocket(8080);

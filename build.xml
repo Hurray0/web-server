@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<project default="build" basedir=".">
+
+   <property name="appname" value="web-server" />
+   <property name="base" value="." />
+   <property name="src" value="src" />
+   <property name="build" value="classes" />
+   <property name="myclasspath" value="${build}" />
+
+   <target name="build">
+       <mkdir dir="${build}" />
+       <javac classpath="${myclasspath}" srcdir="${src}" destdir="${build}">
+           <include name="**/*.java" />
+       </javac>
+   </target>
+
+   <target name="run" depends="build">
+       <exec executable="java">
+           <arg line=" -classpath ${myclasspath} Server" />
+       </exec>
+   </target>
+
+   <target name="clean">
+       <delete includeEmptyDirs="true">
+           <fileset dir="${build}" />
+       </delete>
+   </target>
+
+</project>
