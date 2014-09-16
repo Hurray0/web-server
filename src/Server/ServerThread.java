@@ -25,9 +25,9 @@ public class ServerThread extends Thread {
             DataInputStream input = new DataInputStream(socket.getInputStream());
             PrintStream output = new PrintStream(socket.getOutputStream());
 
-            for(int i=0;i<7;i++){
+            for(int i=0;i<6;i++){
                 String readHead = input.readLine();
-                    // System.out.println(readHead);
+                System.out.println(readHead);
             }
 
             String myout = ReadHtml.print("url/helloworld.html");
@@ -40,7 +40,10 @@ public class ServerThread extends Thread {
             output.println("");
             output.println(myout); 
             output.flush();
-
+            for(int i=0;i<2;i++){
+                String readHead = input.readLine();
+                System.out.println(readHead);
+            }
             socket.close();
 
         }

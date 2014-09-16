@@ -14,8 +14,9 @@ public class ReadHtml {
 
 	public static String print(String filename)
 	{
+		outputMsg = "";
 		File file = new File(filename);
-		System.out.println(file.getAbsolutePath());
+		// System.out.println(file.getAbsolutePath());
 		BufferedReader reader = null;
 		try {
 			// System.out.println("以行为单位读取文件内容，一次读一整行：");
