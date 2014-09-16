@@ -30,7 +30,7 @@ public class ServerThread extends Thread {
                     // System.out.println(readHead);
             }
 
-            String myout = "<h1>Hello Hurray!</h1>";
+            String myout = ReadHtml.print("url/helloworld.html");
 
             output.println("HTTP/1.0 200 OK");
             output.println("MIME_version:1.0");

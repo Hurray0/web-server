@@ -17,9 +17,9 @@
 
   <target name="build">
     <mkdir dir="${build}" />
-    <javac classpath="${myclasspath}" srcdir="${src}" destdir="${build}">
+    <javac classpath="${myclasspath}"  fork="true" srcdir="${src}" destdir="${build}">
       <classpath refid="project.classpath"></classpath>
-      <include name="Server/Thread/*.java" />
+      <include name="Server/method/*.java" />
       <include name="Server/*.java" />
     </javac>
   </target>
