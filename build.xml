@@ -6,26 +6,23 @@
   <property name="base" value="." />
   <property name="src" value="src" />
   <property name="build" value="build" />
-  <property name="lib" value="${src}/lib" />
-  <property name="myclasspath" value="${lib}" />
+  <property name="lib" value="lib" />
+  <property name="myclasspath" value="${build}:${lib}" />
+
+  <path id="project.classpath">  
+    <fileset dir="${lib}">   
+      <include name="**/*.jar"/>   
+    </fileset>   
+  </path>
 
   <target name="build">
     <mkdir dir="${build}" />
-    <path id="project.classpath">  
-      <fileset dir="${lib}">   
-        <include name="**/*.jar"/>   
-      </fileset>   
-    </path>
     <javac classpath="${myclasspath}" srcdir="${src}" destdir="${build}">
       <classpath refid="project.classpath"></classpath>
       <include name="Server/*.java" />
-<!--       <include name="Server/bean/*.java" />
-      <include name="Server/Server_Thread/*.java" />
-      <include name="Server/Server_MainThread.java" />
-      <include name="Server/Server.java" /> -->
     </javac>
   </target>
-  <target name="run" depends="build">
+  <target name="run">
     <exec executable="java">
       <arg line=" -classpath ${myclasspath} Server" />
     </exec>
