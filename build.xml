@@ -19,6 +19,7 @@
     <mkdir dir="${build}" />
     <javac classpath="${myclasspath}" srcdir="${src}" destdir="${build}">
       <classpath refid="project.classpath"></classpath>
+      <include name="Server/Thread/*.java" />
       <include name="Server/*.java" />
     </javac>
   </target>
