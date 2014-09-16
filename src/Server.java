@@ -7,9 +7,12 @@
 // E-mail: i@ihurray.com
 // Web-site: http://blog.ihurray.com
 
+//通信包
 import java.io.*;
 import java.net.*;
 import java.util.*;
+//线程池包
+import java.util.concurrent.*;
 
 public class Server {
     
@@ -19,6 +22,8 @@ public class Server {
     }
     public Server()
     {
+        // 线程池
+        ExecutorService executor = Executors.newCachedThreadPool();
         try{
             ServerSocket serverSocket = new ServerSocket(8080);
             while(true)
@@ -26,7 +31,7 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 // System.out.println(socket);
                 ServerThread thread = new ServerThread(socket);
-                thread.start();
+                executor.execute(thread);
             }
         }
         catch(Exception e)
