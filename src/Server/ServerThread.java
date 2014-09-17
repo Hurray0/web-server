@@ -25,12 +25,18 @@ public class ServerThread extends Thread {
             DataInputStream input = new DataInputStream(socket.getInputStream());
             PrintStream output = new PrintStream(socket.getOutputStream());
 
-            for(int i=0;i<6;i++){
-                String readHead = input.readLine();
-                System.out.println(readHead);
-            }
+            Request request = new Request(input);
+            request.parse();
+            System.out.println(request.geturl());
 
-            String myout = ReadHtml.print("url/helloworld.html");
+            String myout;
+            try{
+                myout = ReadHtml.print("url"+request.geturl());
+            }
+            catch(Exception e)
+            {
+                myout = "404 not found";
+            }
 
             output.println("HTTP/1.0 200 OK");
             output.println("MIME_version:1.0");
@@ -40,10 +46,7 @@ public class ServerThread extends Thread {
             output.println("");
             output.println(myout); 
             output.flush();
-            for(int i=0;i<2;i++){
-                String readHead = input.readLine();
-                System.out.println(readHead);
-            }
+
             socket.close();
 
         }
