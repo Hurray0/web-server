@@ -16,16 +16,15 @@ public class ReadHtml {
 	{
 		outputMsg = "";
 		File file = new File(filename);
-		System.out.println(file.getAbsolutePath());
 		BufferedReader reader = null;
 		reader = new BufferedReader(new FileReader(file));
 		String tempString = null;
 
-		int line = 1;
 		while ((tempString = reader.readLine()) != null) {
 			outputMsg += tempString+"\n";
 		}
 		reader.close();
+		// System.out.println(outputMsg);
 
 		return outputMsg;
 	}

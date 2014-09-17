@@ -30,6 +30,7 @@ public class ServerThread extends Thread {
             System.out.println(request.geturl());
 
             String myout;
+            System.out.println(myout);
             try{
                 myout = ReadHtml.print("url"+request.geturl());
             }
