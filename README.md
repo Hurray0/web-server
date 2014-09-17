@@ -17,3 +17,7 @@ web-server
 
 * 主目录下使用命令ant编译
 * 运行：ant run
+
+##历程
+利用request获取url地址，读取相应位置的url文件
+
